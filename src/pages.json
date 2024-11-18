@@ -1,0 +1,491 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/news/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/exhibitor/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/activity/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/center/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/login/userInfo",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/agreement/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		},
+		{
+			"path": "pages/agreement/shouxie",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "海名印包展"
+			}
+		}
+	],
+	"subPackages": [{
+		"root": "pages_host",
+		"pages": [
+			{
+				"path": "client/client",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+				"path": "check/index",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+				"path": "check/match",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+				"path": "check/stone",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+				"path": "check/product",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+				"path": "invite/index",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+				"path": "cmeiban/index",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},{
+				"path": "verification/index",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},{
+				"path": "verification/info",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			}
+		]
+	},
+		{
+			"root": "pages_index",
+			"pages": [
+				{
+					"path": "search/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "pay/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},{
+					"path": "pay/list",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "pay/info",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "exhibitorInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "productInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "changeCity/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "newsInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "webview/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "jgInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "activityInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/activity/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/contact/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/exit/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/myTeam/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/team/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/teamInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "mine/tickets/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "ticketInfo/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "ticketInfo/userInfo",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "register/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "register/audit",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "exhibitorTicket/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages_platform",
+			"pages": [
+				{
+					"path": "collect/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "certification/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "exhibit/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "exhibit/edit",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "exhibit/add",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "relation/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "relation/edit",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "relation/add",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "store/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "store/info",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "match/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "match/list",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "match/rank",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},{
+					"path": "certificate/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "certificate/list",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "meiban/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "integral/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "integral/qrInfo",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
+					"path": "test/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				}
+			]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#00C0C6",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tarBar/homePage.png",
+				"selectedIconPath": "static/tarBar/chomePage.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/news/index",
+				"iconPath": "static/tarBar/news.png",
+				"selectedIconPath": "static/tarBar/cNews.png",
+				"text": "新闻"
+			},
+			{
+				"pagePath": "pages/center/index",
+				"iconPath": "static/tarBar/news.png",
+				"selectedIconPath": "static/tarBar/cNews.png",
+				"text": "海名印包展"
+			},
+			{
+				"pagePath": "pages/activity/index",
+				"iconPath": "static/tarBar/activity.png",
+				"selectedIconPath": "static/tarBar/cActivity.png",
+				"text": "活动"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"iconPath": "static/tarBar/mine.png",
+				"selectedIconPath": "static/tarBar/cMine.png",
+				"text": "我的"
+			}
+		]
+	}
+}
