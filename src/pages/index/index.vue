@@ -276,7 +276,10 @@
 						this.navigator('/pages_index/jgInfo/index?id=' + item.article_id + '&title=' + item.page_title);
 						break;
 					case 1:
-						this.navigator('/pages/news/index');
+					uni.switchTab({
+							url: '/pages/news/index'
+						})
+						// this.navigator('/pages/news/index');
 						break;
 					case 2:
 						uni.switchTab({
