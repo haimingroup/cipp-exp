@@ -4,36 +4,20 @@
 		<u-navbar :fixed="true" placeholder :bgColor="bgColor" @leftClick="back">
 			<view class="navTitle" slot="left">
 				<u-icon name="arrow-left" color="#FFF"></u-icon>
-				<text style="margin-left: 10rpx">展商详情</text>
+				<text style="margin-left: 10rpx">企业详情</text>
 			</view>
 		</u-navbar>
-		<!-- <view class="header">
-			<u-swiper
-              :list="info.imgs"
-              height="422"
-              @change="change"
-              :autoplay="false"
-              indicatorStyle="right: 20px"
-			>
-					<view
-							slot="indicator"
-							class="indicator-num"
-					>
-						<text class="indicator-num__text">{{ currentNum + 1 }}/{{ info.imgs.length }}</text>
-					</view>
-			</u-swiper>
-		</view> -->
 		<view class="content">
 			<view class="info">
 				<view class="up">
 					<u-avatar :src="info.logo" shape="square" size="170"></u-avatar>
 					<view class="title">
-						<view class="name">{{ info.company_name }}</view>
-						<view class="type">展商类型:{{ info.tags_name }}</view>
+						<view class="name">{{ info.name }}</view>
+						<view class="type">{{ info.tags_name }}</view>
 					</view>
 				</view>
-				<view class="text">诚邀您莅临我司展台</view>
-				<view class="number" :style="`background:`+ themeColors">{{ info.store_exhibit.booth_no }}</view>
+				<view class="text"></view>
+				<view class="number" :style="`background:`+ themeColors">欢迎现场洽谈咨询 </view>
 			</view>
 			<view class="briefIntroduction">
 				<u-tabs :list="list" :scrollable="false" lineWidth="74rpx" lineHeight="6rpx" :lineColor="themeColors"
@@ -85,9 +69,29 @@
 		</view>
 		<u-popup :show="showlp" :safeAreaInsetBottom="false" mode="center"  @close="showlp = false">
 				<view class="lpBox">
-					<defaultBox v-if="postInfo.bg_type === 1" ref='child'/>
-					<cw v-else-if="postInfo.bg_type === 3" ref='child1'/>
-					
+					<!-- <lime-painter  :postInfo="postInfo" /> -->
+					<image
+						:src="picture2"
+						style="width: 620rpx; height:900rpx;"
+						mode="scaleToFill"
+					/>
+					<l-painter css="width: 620rpx; height:900rpx; " 
+						custom-style="position: fixed; left: 200%"
+						@fail="fail"
+						@done="done"
+						pathType="url"
+						ref="poster"
+						performance
+					>
+						<l-painter-image :src="postInfo.bg_img" css="width: 620rpx; height:900rpx; position:absolute; "/>
+						<l-painter-image :src="postInfo.store_one.logo" css="width: 72rpx;  height: 72rpx;position:absolute;top:295.2rpx;left:166rpx; "/>
+						<l-painter-view   css="color:#055739;position:absolute;top:388.2rpx; left:140rpx;width:338rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;height:59.2rpx;line-height:59.2rpx;text-align:center">
+							<l-painter-text :css="`font-size:${fontSize}rpx`" :text="postInfo.store_one.name"/>
+						</l-painter-view>
+						<l-painter-text :text="postInfo.booth_no" css="position:absolute;top:476rpx;left:340rpx;color:#055739;font-size:35.2rpx"></l-painter-text>
+						<l-painter-image :src="postInfo.qr_code_mini_url" css="width: 124.8rpx;height: 124.8rpx; border-radius:50%;position:absolute;top:678.8rpx;left:80.4rpx; "/>
+					</l-painter>
+					<view class="save" :style="'background:'+ themeColors" @click="save">保存到相册</view>
 				</view>
 			</u-popup>
 	</view>
@@ -103,13 +107,12 @@
 	import {
 		getMyTicket
 	} from "@/api/register";
+	import {getInfo} from "@/api/list.js";
 	import productBox from "../../components/productBox.vue";
-	import defaultBox from "../lpainter/default.vue";
-	import cw from "../lpainter/cw2.vue";
 	import config from "@/utils/config"
 	export default {
 		components: {
-			productBox,defaultBox,cw
+			productBox
 		},
 		data() {
 			return {
@@ -122,7 +125,7 @@
 				list: [{
 					name: '简介'
 				}, {
-					name: '产品'
+					name: '订单'
 				}],
 				productList: [],
 				activeStyle: {
@@ -141,6 +144,7 @@
 				lock:false,
 				picture: '',
 				picture2: '',
+				fontSize:25.6,
 			};
 		},
 		
@@ -154,6 +158,14 @@
 					uni.setStorageSync('store_id',arr[2])
 					uni.setStorageSync('team_id',arr[3])
 					uni.setStorageSync('toexinfo',1)
+				}
+				if(!uni.getStorageSync('color')){
+					getInfo({exhibit_id:uni.getStorageSync('exhibit_id')}).then((res)=>{
+						uni.setStorageSync("ceilingImg", res.data.img);
+						uni.setStorageSync('color', res.data.color_main);
+						uni.setStorageSync('color_d', res.data.color_deputy);
+						this.themeColors = res.data.color_main
+					})
 				}
 			}
 			uni.showLoading({
@@ -179,28 +191,18 @@
 						page:'pages_index/exhibitorInfo/index'
 				}).then((res)=>{
 					this.postInfo = res.data
-					let num = this.postInfo.store_one.name.length
+					let num = this.postInfo.store_one.company_name.length
 					if(num > 13){
 						this.fontSize = 16.6
 						let dValue = num - 13
 						if( dValue > 7){
 							this.fontSize = 25.6
-							this.postInfo.store_one.name = this.postInfo.store_one.name.substr(0,12)+'...'
+							this.postInfo.store_one.company_name = this.postInfo.store_one.company_name.substr(0,12)+'...'
 						}
-					}
-				
-					if(this.postInfo.bg_type === 1){
-						this.$nextTick(()=>{
-							this.$refs.child.postInfo  = this.postInfo
-						})
-					}else if(this.postInfo.bg_type === 3){
-						this.$nextTick(()=>{
-							this.$refs.child1.postInfo  = this.postInfo
-						})
 					}
 				})
 			})
-			
+
 		},
 		onShareAppMessage(res) {
 			console.log(res)
@@ -302,7 +304,47 @@
 			checkShare(){
 				this.close()
 				this.showlp = true
-				console.log()
+				this.$refs.poster.canvasToTempFilePathSync({
+				fileType: 'jpg',
+				quality: 1,
+				success: (res) => {
+					this.picture2 = res.tempFilePath
+				}
+			})
+			},
+			fail(v) {
+				console.log(v)
+			},
+			done(v) {
+				console.log('绘制完成:',v)
+			},
+			save() {
+				this.$refs.poster.canvasToTempFilePathSync({
+					fileType: 'jpg',
+					quality: 1,
+					success: (res) => {
+						console.log(res.tempFilePath)
+						this.picture2 = res.tempFilePath
+						this.saveImage()
+					},
+					fail(e) {
+						console.log('???????????',e)
+					}
+				})
+			},
+			// 保存图征
+			saveImage() {
+				uni.saveImageToPhotosAlbum({
+					filePath: this.picture2,
+					success(res) {
+						uni.showToast({
+							title: '已保存到相册',
+							icon: 'success',
+							duration: 2000
+						});
+					},
+				});
+				
 			},
 			open() {
 			},
@@ -312,13 +354,7 @@
 			},
 			back() {
 				uni.setStorageSync('current',0)
-				uni.navigateBack(
-					{
-						fail:()=>{
-							uni.switchTab('/pages/exhibitor/index')
-						}
-					}
-				);
+				uni.navigateBack();
 			},
 		},
 	};
@@ -350,12 +386,12 @@
 	}
 
 	.content {
-		padding: 30rpx;
+		margin-top: 20rpx;
+		padding: 0 30rpx;
 		position: relative;
 	}
 
 	.info {
-
 		padding: 32rpx;
 		border-radius: 20rpx;
 		background: #FFF;
@@ -477,7 +513,19 @@
 		padding: 0;
 		line-height: 32rpx !important;
 	}
-
+	.lpBox{
+		width: 620rpx;
+		height: 900rpx;
+		
+	}
+	.save{
+		position: absolute;
+		bottom: -110rpx;
+		padding: 20rpx 36rpx;
+		left: 196rpx;
+		color: #FFF;
+		border-radius: 10rpx;
+	}
 	button::after {
     	border: none;
   	}

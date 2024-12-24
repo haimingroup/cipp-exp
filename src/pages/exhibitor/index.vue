@@ -84,7 +84,7 @@
 				list: [{
 					name: '展商名录'
 				}, {
-					name: '展品列表'
+					name: '采购订单'
 				}],
 				newsList: [],
 				newsPage: 1,

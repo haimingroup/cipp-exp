@@ -71,7 +71,7 @@
 			<view class="box" style="margin-top: 30rpx; height: 288rpx">
 				<image style="width: 690rpx; height: 288rpx" :src="homeList.adv.lab.img" mode="aspectFit" />
 			</view>
-			<!-- <view class="box" style="margin-top: 30rpx;padding: 32rpx;">
+			<view class="box" style="margin-top: 30rpx;padding: 32rpx;">
 				<view class="title">
 					<view class="leftTitle">
 						<view class="colorBox" :style="'background:'+ themeColors" />
@@ -86,7 +86,7 @@
 						<image class="gridItem"  :src="listItem.store_one.logo" mode="scaleToFill" />
 					</u-grid-item>
 				</u-grid>
-			</view> -->
+			</view>
 		</view>
 
 		<view class="news">

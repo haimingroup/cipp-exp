@@ -4,7 +4,7 @@
     <u-navbar :fixed="true" :bgColor="bgColor" @leftClick="back" placeholder>
       <view class="navTitle" slot="left">
         <u-icon name="arrow-left" color="#FFF"></u-icon>
-        <text style="margin-left: 10rpx">产品详情</text>
+        <text style="margin-left: 10rpx">订单详情</text>
       </view>
     </u-navbar>
     <view class="content">
@@ -23,8 +23,8 @@
             </view>
       </u-swiper>
       <view class="nameBox">
-        <view class="title">
-           产品名称
+        <view class="title" :style='`color:`+themeColors'>
+           订单名称
         </view>
         <view class="name">
           {{ info.goods_name }}
@@ -38,7 +38,7 @@
         <view class="companyName">{{ info.store_one.company_name }}</view>
         <u-icon name="arrow-right"></u-icon>
       </view>
-      <u-divider text="产品详情" textSize="20rpx"></u-divider>
+      <u-divider text="订单详情" textSize="20rpx"></u-divider>
       <view class="info"> 
           <view class="one">
             <view class="oneContent">{{ info.goods_dec }}</view>
@@ -172,11 +172,7 @@ export default {
     },
     back() {
       uni.setStorageSync('current',1)
-      uni.navigateBack({
-						fail:()=>{
-							uni.switchTab('/pages/exhibitor/index')
-						}
-					});
+      uni.navigateBack();
     },
   },
 };

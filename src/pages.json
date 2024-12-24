@@ -463,10 +463,10 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/news/index",
+				"pagePath": "pages/exhibitor/index",
 				"iconPath": "static/tarBar/news.png",
 				"selectedIconPath": "static/tarBar/cNews.png",
-				"text": "新闻"
+				"text": "展商"
 			},
 			{
 				"pagePath": "pages/center/index",
