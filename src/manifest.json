@@ -69,6 +69,8 @@
 			"urlCheck": false,
 			"es6": true,
 			"postcss": true,
+			"gnoreDevUnusedFiles": false ,
+        	"ignoreUploadUnusedFiles": false,
 			"minified": true
 		},
 		"usingComponents": true,

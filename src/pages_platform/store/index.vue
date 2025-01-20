@@ -48,6 +48,17 @@
                     </u-form-item>
                 </view>
                 <view class="box">
+                    <u-form-item label="主营产品" ref="item1">
+                        <u--input
+                                v-model="cerform.business   "
+                                placeholder="请输入信息"
+                                maxlength="8"
+                                border="bottom"
+                                :disabled ='disable'
+                        ></u--input>
+                    </u-form-item>
+                </view>
+                <view class="box">
                     <u-form-item label="公司简介">
                         <u--textarea v-model="cerform.dec" maxlength="1000"  :disabled ='disable'  border="bottom" placeholder="请输入内容" autoHeight ></u--textarea>
                     </u-form-item>
@@ -141,7 +152,7 @@ export default {
     return {
         themeColors: uni.getStorageSync('color'),
         bgColor: uni.getStorageSync('color'),
-        cerform:{name:'',brand_name:'',imgs:[],logo:'',dec:'' }, // tag_name:''
+        cerform:{name:'',brand_name:'',imgs:[],logo:'',dec:'',business:'' }, // tag_name:''
         content:'店铺修改后需要重新审核，店铺自动下架，是否确认修改？',
         info:{},
         tagList:[],
@@ -163,8 +174,8 @@ export default {
 			});
         getMyStore({}).then((res)=>{
             this.info = res.data
-            const { name,logo,imgs,dec,brand_name} =res.data
-            this.cerform = {name:name,logo:logo,imgs:imgs,dec:dec,brand_name:brand_name}
+            const { name,logo,imgs,dec,brand_name,business} =res.data
+            this.cerform = {name:name,logo:logo,imgs:imgs,dec:dec,brand_name:brand_name,business:business}
             this.fileList1.push({url:this.cerform.logo,type: "image"})
             for(let i in this.cerform.imgs){
                 this.fileList2.push({url:this.cerform.imgs[i],type: "image"})

@@ -98,10 +98,12 @@ export default {
                             icon: 'none',
                             mask: true
                         })
-                        verifyTicketBySelf({exhibit_id:uni.getStorageSync('exhibit_id')}).then(((res)=>{
-                            uni.removeStorageSync('self_write_off')
-                            uni.switchTab({ url: '/pages/center/index' })
-                        }))
+                        if(uni.getStorageSync("self_write_off")){
+                            verifyTicketBySelf({exhibit_id:uni.getStorageSync('exhibit_id')}).then(((res)=>{
+                                uni.removeStorageSync('self_write_off')
+                                uni.switchTab({ url: '/pages/center/index' })
+                            }))
+                        }
                     }
                 })
                }else{

@@ -82,3 +82,10 @@ export function proUserUp(data) {
         data: data
     })
 }
+// 专业观众修改状态
+export function editProStatus(data) {
+    return apiPost({
+        url: '/v2/ticket/editProStatus',
+        data: data
+    })
+}

@@ -298,6 +298,13 @@
 					}
 				},
 				{
+					"path": "register/fail",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名印包展"
+					}
+				},
+				{
 					"path": "exhibitorTicket/index",
 					"style": {
 						"navigationStyle": "custom",

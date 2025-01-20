@@ -54,6 +54,17 @@
                         ></u--input>
                     </u-form-item>
                 </view>
+                <view class="box">
+                    <u-form-item label="主营产品" ref="item1">
+                        <u--input
+                                v-model="cerform.business"
+                                placeholder="请输入信息"
+                                maxlength="8"
+                                border="bottom"
+                                :disabled ='disable'
+                        ></u--input>
+                    </u-form-item>
+                </view>
                 <view class="box" @tap="getTag">
                     <u-form-item label="店铺标签">
                         <u--input
@@ -169,6 +180,7 @@
 				imgs:[],
 				dec:'',
 				brand_name:'',
+                business:''
               },
               tagList:[],
               current:'',
@@ -208,6 +220,7 @@
 				imgs:this.cerform.imgs.join(),
 				dec:this.cerform.dec,
 				brand_name:this.cerform.brand_name,
+                business:this.cerform.business
 			}).then((res)=>{
 				if(res.code == 1){
 					this.showPop = false
