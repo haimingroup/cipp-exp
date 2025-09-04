@@ -25,9 +25,18 @@ export default {
   },
   methods: {
     navigator() {
-        uni.navigateTo({
-          url: '/pages_index/exhibitorInfo/index?id=' + this.info.id +'&store_id=' + this.item.store_id,
-      })
+      let pages =  getCurrentPages(); // 获取当前页面栈
+			let currentPage = pages[pages.length - 1]; // 获取当前页面
+			if(uni.getStorageSync('token')){
+				uni.navigateTo({
+					url: '/pages_index/exhibitorInfo/index?id=' + this.info.id +'&store_id=' + this.item.store_id,
+				})
+			}else{
+				uni.setStorageSync('num',0)
+				uni.redirectTo({
+					url: '/pages/login/index?data='+currentPage.route
+				})
+			}
     },
   },
 };

@@ -113,7 +113,7 @@
             ></u-picker>
           </u-form-item>
             <!-- 单选 -->
-            <u-form-item label="观众身份" prop="phone" required>
+            <u-form-item v-if="showAud" label="观众身份" prop="phone" required>
               <u-radio-group
                 v-model="from.type"
                 placement="row"
@@ -175,8 +175,7 @@
 </template>
    <script>
 import { getFields, addTicket, getAreaJson, getCountry,proUserUp } from "@/api/register";
-import {findTicket} from '@/api/v2'
-import {verifyTicketBySelf} from '@/api/v2'
+import {verifyTicketBySelf,findTicket,getInfo} from '@/api/v2'
 import config from '@/utils/config.js'
 export default {
   data() {
@@ -204,6 +203,7 @@ export default {
       fileList1: [],
       fileList2: [],
       showUPload: false,
+       showAud:false,
     };
   },
   async onLoad(options) {
@@ -211,6 +211,9 @@ export default {
     uni.showLoading({
       title: "加载中",
     });
+    getInfo({exhibit_id:uni.getStorageSync('exhibit_id')}).then((res) => {
+				uni.setStorageSync("phone",res.data.phone);
+		});
     await getFields({
       exhibit_id: uni.getStorageSync("exhibit_id"),
     }).then((res) => {
@@ -219,20 +222,28 @@ export default {
         icon: "none",
       });
       this.showList = res.data
-      this.showList.map((item, index) => {
+      if(res.code ==27){
+        this.showAud = true
+      }
+      let tempList = res.data;
+      tempList.forEach((item) => {
+        console.log(item.exhibit_field_one.field_name, item.exhibit_field_one.field_label)
         this.from[item.exhibit_field_one.field_name] = "";
         if (item.exhibit_field_one.field_name == "area_code") {
           this.showArea = true;
-          this.showList.splice(index, 1);
         }
         if (item.exhibit_field_one.field_name == "country") {
           this.showcountry = true;
-          this.showList.splice(index, 1);
         }
         if (item.exhibit_field_one.field_name == "phone") {
           this.from["phone"] = uni.getStorageSync("phone");
         }
       });
+      // 过滤掉不需要显示的字段
+      this.showList = tempList.filter(item => 
+        item.exhibit_field_one.field_name !== "area_code" && 
+        item.exhibit_field_one.field_name !== "country"
+      );
       this.from['type'] = 0
       uni.hideLoading();
     });
@@ -439,19 +450,33 @@ export default {
 								uni.navigateTo({
 									url: "/pages_index/webview/index"
 							})
-          }else if(res.data.act == 1){
+          }else if(res.data.question_paper_no){
+            uni.setStorageSync('enroll_user_id',res.data.enroll_user_id)
             uni.navigateTo({
-              url:'/pages_index/pay/list'
+              url:'/pages_host/questionnaire/index?question_paper_no='+res.data.question_paper_no
             })
-          }else if(res.data.pay == 1){
+          }
+          // else if(res.data.act == 1){
+          //   uni.navigateTo({
+          //     url:'/pages_index/pay/list'
+          //   })
+          // }
+          else if(res.data.pay == 1){
             uni.navigateTo({
               url:'/pages_index/pay/index'
+            })
+          }else if(res.data.poll == 1){
+            uni.setStorageSync('enroll_user_id',res.data.enroll_user_id)
+            uni.navigateTo({
+              url: "/pages_host/zzquestionnaire/index?enroll_user_id="+res.data.enroll_user_id+"&pay="+res.data.pay
             })
           }else if(uni.getStorageSync("self_write_off")){
             verifyTicketBySelf({exhibit_id:uni.getStorageSync('exhibit_id')}).then(((res)=>{
                 uni.removeStorageSync('self_write_off')
                 uni.switchTab({ url: '/pages/center/index' })
             }))
+          }else{
+            uni.switchTab({ url: '/pages/center/index' })
           }
       }
       }).catch();

@@ -1,7 +1,7 @@
-# 宠物小程序
+# 印包小程序
 
 #### Description
-宠物小程序
+印包小程序
 
 #### Software Architecture
 Software architecture description

@@ -28,7 +28,7 @@ export function getFields(data) {
 // 观众登记 
 export function addTicket(data) {
     return apiPost({
-        url: '/v2/user/addTicket',
+        url:'/v3/ticket/addTicket',
         data: data
     })
 }

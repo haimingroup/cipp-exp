@@ -180,7 +180,8 @@
 				imgs:[],
 				dec:'',
 				brand_name:'',
-                business:''
+                business:'',
+                tags_name:'',
               },
               tagList:[],
               current:'',
@@ -219,6 +220,7 @@
 				logo:this.cerform.logo,
 				imgs:this.cerform.imgs.join(),
 				dec:this.cerform.dec,
+                tag_name:this.cerform.tags_name,
 				brand_name:this.cerform.brand_name,
                 business:this.cerform.business
 			}).then((res)=>{
@@ -318,10 +320,10 @@
         checkTag(str){
             if(this.current == str){
                 this.current = ''
-                this.form.tag_name = ''
+                this.cerform.tags_name = ''
             }else{
                 this.current = str
-                this.form.tags_name = str
+                this.cerform.tags_name = str
                 this.showPop1 = false
             }
         },

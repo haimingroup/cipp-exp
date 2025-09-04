@@ -75,7 +75,7 @@
 				<view class="title">
 					<view class="leftTitle">
 						<view class="colorBox" :style="'background:'+ themeColors" />
-						<text>展商推荐</text>
+						<text>企业推荐</text>
 					</view>
 					<view class="rightTitle" :style="'color:'+ themeColors" @tap="toExhibitor">
 						更多 >>>
@@ -133,7 +133,7 @@
 		data() {
 			return {
 				columns: [
-					['展商', '展品']
+					['企业', '展品']
 				],
 				keyword: '',
 				themeColors: '',
@@ -144,7 +144,7 @@
 				current_news_cate_id: "",
 				showLocation: false,
 				showPicker: false,
-				showPickerText: '展商',
+				showPickerText: '企业',
 				topIconDistance: "",
 				nowExhibits: {},
 				homeList: {
@@ -359,13 +359,6 @@
 						return;
 					} else {
 						this.lock = true;
-						if(uni.getStorageSync("exhibit_id") ==4){
-							uni.setStorageSync('webviewUrl', 'https://c.zzhaiming.com/web-reg-server/mobile/vistor-register-m.html?EID=E0000000528&target=1&orgnum=1250&pid=1393&version=1&cid=4326&ctid=86')
-							uni.navigateTo({
-								url: "/pages_index/webview/index"
-							})
-							this.lock = false;
-						}else{
 							getMyTicket({
 								exhibit_id: uni.getStorageSync("exhibit_id"),
 							}).then((res) => {
@@ -387,7 +380,6 @@
 								}
 								this.lock = false;
 							});
-						}
 					}
 				} else {
 					next();
@@ -422,45 +414,30 @@
 			},
 			//点击门票
 			toTickerInfo() {
-				//参观门票点击事件
-				if (!uni.getStorageSync("token")) {
-					uni.redirectTo({
-						url: "/pages/login/index",
-					});
-					return;
-				}
 				if (this.lock) {
 					return;
 				} else {
 					this.lock = true;
-					if(uni.getStorageSync("exhibit_id") ==4){
-							uni.setStorageSync('webviewUrl', 'https://c.zzhaiming.com/web-reg-server/mobile/vistor-register-m.html?EID=E0000000528&target=1&orgnum=1250&pid=1393&version=1&cid=4326&ctid=86')
-							uni.navigateTo({
-								url: "/pages_index/webview/index"
-							})
+					getMyTicket({
+						exhibit_id: uni.getStorageSync("exhibit_id"),
+					}).then((res) => {
+						if (res.code == -1) {
 							this.lock = false;
-						}else{
-							getMyTicket({
-								exhibit_id: uni.getStorageSync("exhibit_id"),
-							}).then((res) => {
-								if (res.code == -1) {
-									this.lock = false;
-									return;
-								}
-								if (res.code == 1) {
-									this.lock = false;
-									uni.switchTab({
-										url: "/pages/center/index",
-									});
-								}
-								if (res.code == 25){
-									uni.navigateTo({
-										url: "/pages_index/exhibitorTicket/index"
-									})
-								}
-								this.lock = false;
+							return;
+						}
+						if (res.code == 1) {
+							this.lock = false;
+							uni.switchTab({
+								url: "/pages/center/index",
 							});
 						}
+						if (res.code == 25){
+							uni.navigateTo({
+								url: "/pages_index/exhibitorTicket/index"
+							})
+						}
+						this.lock = false;
+					});
 				}
 			},
 			//切换tab栏触发时间

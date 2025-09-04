@@ -85,6 +85,20 @@ export function getCompanyInfo(data) {
 		data: data
 	})
 }
+// 我的店铺资质
+export function getStoreExtInfo(data) {
+	return apiPost({
+		url: '/v2/user/store/getStoreExtInfo',
+		data: data
+	})
+}
+// 保存我的店铺资质
+export function saveStoreExtInfo(data) {
+	return apiPost({
+		url: '/v2/user/store/saveStoreExtInfo',
+		data: data
+	})
+}
 // 我的店铺信息
 export function getMyStore(data) {
 	return apiPost({
@@ -306,4 +320,10 @@ export function getLintel(data) {
 		data: data
 	})
 }
-
+// 找回门票
+export function findTicket(data) {
+	return apiPost({
+		url: '/v2/user/findTicket',
+		data: data
+	})
+}

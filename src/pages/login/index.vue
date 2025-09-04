@@ -80,6 +80,7 @@ export default {
       lock: false,
       isNew: false,
       userNotice: "",
+      localUrl:'',
     };
   },
   onShow() {
@@ -91,6 +92,10 @@ export default {
     }).then((res) => {
       this.userNotice = res.data.content;
     });
+  },
+  onLoad(options){
+    this.localUrl = options.data
+    console.log(options)
   },
   methods: {
     //获取用户js-code等信息，在onShow生命周期触发
@@ -153,9 +158,21 @@ export default {
 									url: '/pages_index/exhibitorInfo/index?store_id'+uni.getStorageSync("store_id")
 								})
           }else{
-            uni.switchTab({
-              url: "/pages/mine/index",
-            });
+            if (this.localUrl) {
+              if (this.localUrl.substring(0, 6) == "pages/") {
+                if (this.localUrl == "pages/mine/index") {
+                  uni.switchTab({ url: "/pages/index/index" });
+                } else if (this.localUrl == "pages/navigation/index") {
+                  uni.redirectTo({ url: "/" + this.localUrl });
+                } else {
+                  uni.switchTab({ url: "/" + this.localUrl });
+                }
+              } else {
+                uni.redirectTo({ url: "/" + this.localUrl });
+              }
+            } else {
+              uni.switchTab({ url: "/pages/index/index" });
+            }
           }
         }
       }
@@ -198,8 +215,22 @@ export default {
       uni.removeStorageSync('token')
       uni.removeStorageSync('uniond')
       uni.removeStorageSync('openid')
-      uni.navigateBack({fail:()=>uni.switchTab({url:'/pages/index/index'})});
-        },
+      if (this.localUrl) {
+        if (this.localUrl.substring(0, 6) == "pages/") {
+          if (this.localUrl == "pages/mine/index") {
+            uni.switchTab({ url: "/pages/index/index" });
+          } else if (this.localUrl == "pages/navigation/index") {
+            uni.redirectTo({ url: "/" + this.localUrl });
+          } else {
+            uni.switchTab({ url: "/" + this.localUrl });
+          }
+        } else {
+          uni.redirectTo({ url: "/" + this.localUrl });
+        }
+      } else {
+        uni.switchTab({ url: "/pages/index/index" });
+      }
+      },
     close() {
       this.show = false;
     },

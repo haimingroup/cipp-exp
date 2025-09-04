@@ -3,7 +3,7 @@
 		<!-- 顶部标题栏 -->
 		<u-navbar :fixed="true" :bgColor="bgColor">
 			<view class="navTitle" slot="left" :style="'color:' + titleColor">
-				展商中心
+				企业中心
 			</view>
 		</u-navbar>
 		<view class="header">
@@ -55,10 +55,6 @@
 	} from "@/api/register";
 	import config from "@/utils/config.js";
 	import {
-		getMorePageFocusCata,
-		getListByType
-	} from '@/api/zzapi.js'
-	import {
 		getStoreList,
 		getGoodList
 	} from '@/api/v2.js'
@@ -82,7 +78,7 @@
 				//顶部标题栏背景色
 				bgColor: "rgba(0,0,0,0)",
 				list: [{
-					name: '展商名录'
+					name: '企业名录'
 				}, {
 					name: '采购订单'
 				}],

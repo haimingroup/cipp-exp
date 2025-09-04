@@ -72,10 +72,10 @@
 					<!-- <lime-painter  :postInfo="postInfo" /> -->
 					<image
 						:src="picture2"
-						style="width: 620rpx; height:900rpx;"
+						style="width: 620rpx;height:1300rpx;"
 						mode="scaleToFill"
 					/>
-					<l-painter css="width: 620rpx; height:900rpx; " 
+					<l-painter css="width: 600rpx; height:1300rpx; " 
 						custom-style="position: fixed; left: 200%"
 						@fail="fail"
 						@done="done"
@@ -83,13 +83,25 @@
 						ref="poster"
 						performance
 					>
-						<l-painter-image :src="postInfo.bg_img" css="width: 620rpx; height:900rpx; position:absolute; "/>
-						<l-painter-image :src="postInfo.store_one.logo" css="width: 72rpx;  height: 72rpx;position:absolute;top:295.2rpx;left:166rpx; "/>
-						<l-painter-view   css="color:#055739;position:absolute;top:388.2rpx; left:140rpx;width:338rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;height:59.2rpx;line-height:59.2rpx;text-align:center">
+						<l-painter-image :src="postInfo.bg_img" css="width: 600rpx; height:1300rpx; position:absolute; "/>
+						<l-painter-view   css="position:absolute;top:518.2rpx; left:50%;transform: translateX(-50%);white-space: nowrap;text-overflow: ellipsis;height:59.2rpx;line-height:59.2rpx;text-align:center">
 							<l-painter-text :css="`font-size:${fontSize}rpx`" :text="postInfo.store_one.name"/>
 						</l-painter-view>
-						<l-painter-text :text="postInfo.booth_no" css="position:absolute;top:476rpx;left:340rpx;color:#055739;font-size:35.2rpx"></l-painter-text>
-						<l-painter-image :src="postInfo.qr_code_mini_url" css="width: 124.8rpx;height: 124.8rpx; border-radius:50%;position:absolute;top:678.8rpx;left:80.4rpx; "/>
+						<l-painter-text :text="postInfo.booth_no" css="position:absolute;top:585.8rpx;left:295rpx;font-size:35.2rpx"></l-painter-text>
+						<!-- 展品图片和名称，只有在有展品时才显示 -->
+						<template v-if="productList && productList.length > 0">
+							<l-painter-image :src="productList[0].goods_img" css="min-width:115rpx;height: 230rpx;position:absolute;top:635rpx;left:50%;transform: translateX(-50%); "/>
+							<l-painter-view   css="position:absolute;top:855rpx; left:50%;transform: translateX(-50%);white-space: nowrap;text-overflow: ellipsis;height:59.2rpx;line-height:59.2rpx;text-align:center">
+								<l-painter-text :css="`font-size:${goodSize}rpx`" :text="productList[0].goods_name"/>
+							</l-painter-view>
+						</template>
+						<!-- 没有展品时显示默认文字 -->
+						<template v-else>
+							<l-painter-view css="position:absolute;top:735rpx; left:50%;transform: translateX(-50%);text-align:center">
+								<l-painter-text css="font-size:28rpx;color:#999" text=""/>
+							</l-painter-view>
+						</template>
+						<l-painter-image :src="postInfo.qr_code_mini_url" css="width: 150rpx;height: 150rpx; border-radius:50%;position:absolute;bottom:175rpx;left:50%;transform: translateX(-50%); "/>
 					</l-painter>
 					<view class="save" :style="'background:'+ themeColors" @click="save">保存到相册</view>
 				</view>
@@ -515,7 +527,7 @@
 	}
 	.lpBox{
 		width: 620rpx;
-		height: 900rpx;
+		 height:1300rpx;
 		
 	}
 	.save{

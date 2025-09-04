@@ -138,7 +138,20 @@
 					"navigationStyle": "custom",
 					"navigationBarTitleText": "海名印包展"
 				}
-			}
+			},{
+				"path": "questionnaire/index",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "海名印包展"
+				}
+			},
+			{
+					"path": "zzquestionnaire/index",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "海名纺博会"
+					}
+				}
 		]
 	},
 		{
@@ -473,7 +486,7 @@
 				"pagePath": "pages/exhibitor/index",
 				"iconPath": "static/tarBar/news.png",
 				"selectedIconPath": "static/tarBar/cNews.png",
-				"text": "展商"
+				"text": "企业"
 			},
 			{
 				"pagePath": "pages/center/index",

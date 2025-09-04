@@ -44,7 +44,7 @@ export function apiPost(params) {
 					})
 					let pages =  getCurrentPages(); // 获取当前页面栈
 					let currentPage = pages[pages.length - 1]; // 获取当前页面
-					uni.redirectTo({
+					uni.reLaunch({
 						url: '/pages/login/index?data='+ currentPage.route
 					})
 				}else if (res.data.code == 2) {
@@ -72,13 +72,24 @@ export function apiPost(params) {
 					uni.navigateTo({
 						url: "/pages_index/pay/index"
 					})
-				}else if(res.data.code == 26){
+				}else if(res.data.code == 25){
+					uni.showToast({
+						title: '展商请联系前台工作人员，兑换展商证',
+						icon: 'none',
+						mask: true
+					})
+				}
+				else if(res.data.code == 26){
 					uni.navigateTo({
 						url: "/pages_index/register/audit"
 					})
 				}else if(res.data.code == 29){
 					uni.navigateTo({
 						url: "/pages_index/register/fail"
+					})
+				}else if(res.data.code == 30){
+					uni.navigateTo({
+						url: "/pages_host/zzquestionnaire/index?enroll_user_id="+res.data.data.enroll_user_id+"&pay="+res.data.data.pay
 					})
 				}
 				relove(res.data)

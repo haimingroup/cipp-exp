@@ -22,7 +22,7 @@
                             <text style="color:#000">{{ item.nickname }}</text>
                             <text style="margin-left:16rpx ;">{{item.phone}}</text>
                         </view>
-                        <view style="margin-top: 48rpx;">{{item.id_card.replace(/(.{6}).*(.{4})/, '$1********$2')}}</view>
+                        <view style="margin-top: 48rpx;">{{item.id_card}}</view>
                     </view>
                     <view class="right">
                         <view style="text-align: right;" 
@@ -50,12 +50,15 @@ export default {
         uni.showLoading({title: "加载中",});
         getMyStoreUser({page:1}).then((res)=>{
             this.list = res.data.data
+            for(let i in this.list){
+                if( this.list[i].id_card){
+                    this.list[i].id_card = this.list[i].id_card.replace(/(.{6}).*(.{4})/, '$1********$2')
+                }
+            }
+            console.log(this.list)
             uni.hideLoading();
         })
     },
-    onReachBottom(){
-			this.scrolltolower()
-		},
     methods:{
         back() {
             uni.navigateBack();

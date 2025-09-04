@@ -1,19 +1,12 @@
-# my-project
+# 印包小程序
 
-## Project setup
+## 版本介绍
+### 2.6.0
 ```
-npm install
-```
+修改：
+1. 优化了用户登录流程，提升了登录速度和安全性。
+2. 优化了问卷功能，
+3. 修复了一些已知的 bug，提升了小程序的稳定性和用户体验。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

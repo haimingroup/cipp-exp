@@ -9,7 +9,7 @@
         <view class="content">
             <view class="title">
 				<view class="colorBox" :style="'background:'+ bgColor" />
-				<text>修改联系人</text>
+				<text>添加联系人</text>
 			</view>
             <view class="box">
                 <u--form
@@ -18,43 +18,29 @@
 				ref="uForm"
                 labelWidth="150rpx"
                 >
-                    <u-form-item label="姓名" ref="item1">
+                    <u-form-item label="姓名" ref="item1" required>
                         <u--input
                                 v-model="form.nickname"
                                 placeholder="请输入信息"
                                 border="bottom"
                         ></u--input>
                     </u-form-item>
-                    <u-form-item label="手机号" ref="item1">
+                    <u-form-item label="手机号" ref="item1" required>
                         <u--input
                                 v-model="form.phone"
                                 placeholder="请输入信息"
                                 border="bottom"
                         ></u--input>
                     </u-form-item>
-                    <u-form-item label="密码" ref="item1">
+                    <!-- <u-form-item label="密码" ref="item1">
                         <u--input
                                 v-model="form.password"
                                 placeholder="最少6位,不能含有空格"
                                 border="bottom"
                         ></u--input>
-                    </u-form-item>
-                    <u-form-item label="部门" ref="item1">
-                        <u--input
-                                v-model="form.dept"
-                                placeholder="请输入信息"
-                                border="bottom"
-                        ></u--input>
-                    </u-form-item>
-                    <u-form-item label="职位" ref="item1">
-                        <u--input
-                                v-model="form.position"
-                                placeholder="请输入信息"
-                                border="bottom"
-                        ></u--input>
-                    </u-form-item>
-                    <u-form-item label="证件类型" ref="item1">
-                         <!-- 单选 -->
+                    </u-form-item> -->
+                  
+                    <u-form-item label="证件类型" ref="item1" required>
                             <u-radio-group
                                 v-model="form.card_type"
                                 placement="row"
@@ -80,15 +66,14 @@
                             />
                             </u-radio-group>
                     </u-form-item>
-                    <u-form-item label="证件号" ref="item1">
+                    <u-form-item label="证件号" ref="item1" required>
                         <u--input
                                 v-model="form.id_card"
                                 placeholder="请输入信息"
                                 border="bottom"
                         ></u--input>
                     </u-form-item>
-                    <u-form-item label="证件类型" ref="item1">
-                         <!-- 单选 -->
+                    <u-form-item label="员工类型" ref="item1" required>
                             <u-radio-group
                                 v-model="form.type"
                                 placement="row"
@@ -113,6 +98,20 @@
                                 value="1"
                             />
                             </u-radio-group>
+                    </u-form-item>
+                    <u-form-item label="部门" ref="item1">
+                        <u--input
+                                v-model="form.dept"
+                                placeholder="请输入信息"
+                                border="bottom"
+                        ></u--input>
+                    </u-form-item>
+                    <u-form-item label="职位" ref="item1">
+                        <u--input
+                                v-model="form.position"
+                                placeholder="请输入信息"
+                                border="bottom"
+                        ></u--input>
                     </u-form-item>
                 </u--form>
             </view>
